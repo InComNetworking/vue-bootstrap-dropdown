@@ -76,7 +76,7 @@
 <template>
   <div class="container">
     <!-- Button trigger dropdown -->
-    <div class="btn-group">
+    <div class="btn-toolbar">
       <bootstrap-dropdown
         :title="title1"
         btn-class="btn-danger"
@@ -88,8 +88,6 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </bootstrap-dropdown>
-    </div>
-    <div class="btn-group">
       <bootstrap-dropdown :title="title2">
         <div>
           <a class="dropdown-item" href="#">Action</a>
@@ -116,7 +114,7 @@
       1111
       <hr />
     </div>
-    <div class="btn-group">
+    <div class="btn-toolbar">
       <bootstrap-dropdown :title="title1" btn-class="btn-danger">
         <div>
           <a class="dropdown-item" href="#" @click="title1 = 'Actions'"
@@ -126,8 +124,6 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </bootstrap-dropdown>
-    </div>
-    <div class="btn-group">
       <bootstrap-dropdown :title="title2">
         <div>
           <a class="dropdown-item" href="#">Action</a>
