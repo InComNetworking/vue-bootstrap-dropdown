@@ -2,6 +2,7 @@
 <template>
   <div class="dropdown" :class="{ show: isShow }">
     <button
+      v-if="!btnSplit"
       class="btn dropdown-toggle"
       :class="btnClass"
       type="button"
@@ -14,11 +15,38 @@
     >
       {{ title }}
     </button>
+    <div class="btn-group">
+      <button
+        v-if="btnSplit"
+        class="btn"
+        :class="btnClass"
+        type="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        :id="id"
+        ref="button"
+      >
+        {{ title }}
+      </button>
+      <button
+        v-if="btnSplit"
+        class="btn dropdown-toggle dropdown-toggle-split"
+        :class="btnClass"
+        type="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        :aria-expanded="isShow"
+        @click="switchState"
+      >
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+    </div>
     <div
       class="dropdown-menu"
       ref="popup"
       :class="{ show: isShow }"
       :aria-labelledby="id"
+      @click="switchState"
     >
       <slot></slot>
     </div>

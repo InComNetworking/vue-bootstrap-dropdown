@@ -75,8 +75,30 @@
 </style>
 <template>
   <div class="container">
-    <!-- Button trigger modal -->
-    <bootstrap-dropdown :title="title1" btn-class="btn-danger">
+    <!-- Button trigger dropdown -->
+    <div class="btn-group">
+      <bootstrap-dropdown
+        :title="title1"
+        btn-class="btn-danger"
+        btn-split="true"
+      >
+        <div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </bootstrap-dropdown>
+    </div>
+    <div class="btn-group">
+      <bootstrap-dropdown :title="title2">
+        <div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </bootstrap-dropdown>
+    </div>
+    <bootstrap-dropdown :title="title2" btn-class="btn-warning btn-lg">
       <div>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
@@ -84,14 +106,36 @@
       </div>
     </bootstrap-dropdown>
 
-    <bootstrap-dropdown :title="title2">
-      <div>
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </div>
+    <bootstrap-dropdown :title="title2" btn-class="btn-info" btn-split="true">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
     </bootstrap-dropdown>
 
+    <div style="min-height: 100px">
+      1111
+      <hr />
+    </div>
+    <div class="btn-group">
+      <bootstrap-dropdown :title="title1" btn-class="btn-danger">
+        <div>
+          <a class="dropdown-item" href="#" @click="title1 = 'Actions'"
+            >Action</a
+          >
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </bootstrap-dropdown>
+    </div>
+    <div class="btn-group">
+      <bootstrap-dropdown :title="title2">
+        <div>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </bootstrap-dropdown>
+    </div>
     <bootstrap-dropdown :title="title2" btn-class="btn-warning">
       <div>
         <a class="dropdown-item" href="#">Action</a>
@@ -105,6 +149,10 @@
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
     </bootstrap-dropdown>
+  </div>
+  <div style="min-height: 1000px">
+    1111
+    <hr />
   </div>
 </template>
 <script>
