@@ -1,5 +1,4 @@
 <style lang="scss">
-
 #app {
   padding: 2rem;
   font-weight: normal;
@@ -102,11 +101,9 @@
     </bootstrap-dropdown>
 
     <bootstrap-dropdown :title="title2" btn-class="btn-info" btn-split="true">
-
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
     </bootstrap-dropdown>
   </div>
 </template>
@@ -118,13 +115,13 @@ export default {
       title1: "Title 1",
       title2: "Title 2",
       isModal: false,
-      result: '',
+      result: "",
       actionSettings: [
         {
           title: "Cancel",
           class: "btn-secondary",
           click: function () {
-            self.result='Cancel clicked';
+            self.result = "Cancel clicked";
             self.isModal = false;
           },
         },
@@ -132,14 +129,14 @@ export default {
           title: "Do Danger",
           class: "btn-danger",
           click: function () {
-            self.result='Danger clicked';
+            self.result = "Danger clicked";
           },
         },
         {
           title: "Confirm",
           class: "btn-success",
           click: function () {
-            self.result='Confirm clicked';
+            self.result = "Confirm clicked";
           },
         },
       ],

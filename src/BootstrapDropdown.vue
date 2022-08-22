@@ -1,90 +1,94 @@
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
 <template>
-  <div class="dropdown" :class="{show: isShow}">
-    <button class="btn dropdown-toggle" 
+  <div class="dropdown" :class="{ show: isShow }">
+    <button
+      class="btn dropdown-toggle"
       :class="btnClass"
-      type="button" 
-      data-toggle="dropdown" 
-      aria-haspopup="true" 
+      type="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
       :id="id"
       ref="button"
       @click="switchState"
-      :aria-expanded="isShow">{{title}}</button>
-    <div class="dropdown-menu" 
+      :aria-expanded="isShow"
+    >
+      {{ title }}
+    </button>
+    <div
+      class="dropdown-menu"
       ref="popup"
-      :class="{show: isShow}"
-      :aria-labelledby="id">
+      :class="{ show: isShow }"
+      :aria-labelledby="id"
+    >
       <slot></slot>
     </div>
   </div>
-  
 </template>
 <script>
 import { createPopper } from "@popperjs/core";
 var dropdownCounter = 0;
 var getIdGenerator = function () {
-  return 'dropdown-' + dropdownCounter++;
+  return "dropdown-" + dropdownCounter++;
 };
-var Placement =[
-  'auto',
-  'auto-start',
-  'auto-end',
-  'top',
-  'top-start',
-  'top-end',
-  'bottom',
-  'bottom-start',
-  'bottom-end',
-  'right',
-  'right-start',
-  'right-end',
-  'left',
-  'left-start',
-  'left-end' ];
-var DropDownEvents = ['click']
-if ( window.ontouchstart || navigator.msMaxTouchPoints > 0) {
-  DropDownEvents.push('touchstart');
+var Placement = [
+  "auto",
+  "auto-start",
+  "auto-end",
+  "top",
+  "top-start",
+  "top-end",
+  "bottom",
+  "bottom-start",
+  "bottom-end",
+  "right",
+  "right-start",
+  "right-end",
+  "left",
+  "left-start",
+  "left-end",
+];
+var DropDownEvents = ["click"];
+if (window.ontouchstart || navigator.msMaxTouchPoints > 0) {
+  DropDownEvents.push("touchstart");
 }
 var DropDownInstances = [];
 var isAdded = false;
 
-var clickOutSide = function(event){
+var clickOutSide = function (event) {
   for (var i in DropDownInstances) {
     var el = DropDownInstances[i].el;
     var fn = DropDownInstances[i].fn;
     if (event.target !== el && !el.contains(event.target)) {
-      processFN(fn,event);
+      processFN(fn, event);
     }
   }
-}
+};
 
-var processFN = function(fn, event) {
-  if(!fn) {
-    return
+var processFN = function (fn, event) {
+  if (!fn) {
+    return;
   }
-  setTimeout(function(){
-    fn(event)
-  },10);
-}
+  setTimeout(function () {
+    fn(event);
+  }, 10);
+};
 
-var addDropdownInstances = function(){
+var addDropdownInstances = function () {
   if (!isAdded) {
     for (var i in DropDownEvents) {
       document.addEventListener(DropDownEvents[i], clickOutSide);
     }
   }
-}
+};
 
-var RemoveListeners = function(){
+var RemoveListeners = function () {
   if (DropDownInstances.length > 0) {
     return;
   }
   for (var i in DropDownEvents) {
     document.removeEventListener(DropDownEvents[i], clickOutSide);
   }
-}
+};
 
 export default {
   name: "bootstrap-dropdown",
@@ -93,50 +97,49 @@ export default {
       isShow: false,
     };
   },
-  props: ["title", "position", "btn-class", 'btn-split'],
+  props: ["title", "position", "btn-class", "btn-split"],
   watch: {},
   computed: {
-    buttnoClass: function(){
-      var btnClass = ""
-      if(this.isShow) {
-        btnClass = btnClass + ' show'
+    buttnoClass: function () {
+      var btnClass = "";
+      if (this.isShow) {
+        btnClass = btnClass + " show";
       }
-      return btnClass
-    }
+      return btnClass;
+    },
   },
   methods: {
-    switchState: function(){
+    switchState: function () {
       this.isShow = !this.isShow;
-      var position = 'bottom-start';
-      if(Placement.indexOf(this.placement) !== -1) {
+      var position = "bottom-start";
+      if (Placement.indexOf(this.placement) !== -1) {
         position = this.placement;
       }
-      createPopper(this.$refs['button'], this.$refs['popup'], {
+      createPopper(this.$refs["button"], this.$refs["popup"], {
         placement: position,
       });
     },
   },
   beforeUnmount() {
     for (var i in DropDownInstances) {
-      if (DropDownInstances[i].el === this.$el ) {
+      if (DropDownInstances[i].el === this.$el) {
         DropDownInstances.splice(i, 1);
       }
     }
     RemoveListeners();
   },
-  mounted() { 
+  mounted() {
     addDropdownInstances();
     var self = this;
     DropDownInstances.push({
-      el:  this.$el,
-      fn: function(){
+      el: this.$el,
+      fn: function () {
         self.isShow = false;
-      }
+      },
     });
   },
-  created: function(){
-    this.id = getIdGenerator()
-    
-  }
+  created: function () {
+    this.id = getIdGenerator();
+  },
 };
 </script>
