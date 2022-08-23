@@ -38,13 +38,14 @@
         :aria-expanded="isShow"
         @click="switchState"
       >
-        <span class="sr-only">Toggle Dropdown</span>
+        <span class="visually-hidden">Toggle Dropdown</span>
       </button>
     </div>
     <div
       class="dropdown-menu"
       ref="popup"
-      :class="{ show: isShow }"
+      data-bs-popper="static"
+      :class="dropdownClass"
       :aria-labelledby="id"
       @click="switchState"
     >
@@ -125,13 +126,16 @@ export default {
       isShow: false,
     };
   },
-  props: ["title", "position", "btn-class", "btn-split"],
+  props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class'],
   watch: {},
   computed: {
-    buttnoClass: function () {
+    dropdownClass: function () {
       var btnClass = "";
       if (this.isShow) {
         btnClass = btnClass + " show";
+      }
+      if(this.dropdownClass) {
+        btnClass = btnClass + " " + this.dropdownClass;
       }
       return btnClass;
     },
@@ -143,9 +147,12 @@ export default {
       if (Placement.indexOf(this.placement) !== -1) {
         position = this.placement;
       }
-      createPopper(this.$refs["button"], this.$refs["popup"], {
-        placement: position,
-      });
+      
+      if(this.isShow) {
+        createPopper(this.$refs["button"], this.$refs["popup"], {
+          placement: position,
+        });
+      }
     },
   },
   beforeUnmount() {

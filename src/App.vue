@@ -104,7 +104,7 @@
       </div>
     </bootstrap-dropdown>
 
-    <bootstrap-dropdown :title="title2" btn-class="btn-info" btn-split="true">
+    <bootstrap-dropdown title="dropdown-menu-lg-end" btn-class="btn-info" btn-split="true" dropdown-class="dropdown-menu-end dropdown-menu-lg-start">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
@@ -120,11 +120,12 @@
           <a class="dropdown-item" href="#" @click="title1 = 'Actions'"
             >Action</a
           >
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </bootstrap-dropdown>
-      <bootstrap-dropdown :title="title2">
+      <bootstrap-dropdown title="Drop right" placement="right-start" class="dropend">
         <div>
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
@@ -132,7 +133,7 @@
         </div>
       </bootstrap-dropdown>
     </div>
-    <bootstrap-dropdown :title="title2" btn-class="btn-warning">
+    <bootstrap-dropdown title="Dark" btn-class="btn-warning" dropdown-class="dropdown-menu-dark">
       <div>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
@@ -140,7 +141,7 @@
       </div>
     </bootstrap-dropdown>
 
-    <bootstrap-dropdown :title="title2" btn-class="btn-info" btn-split="true">
+    <bootstrap-dropdown title="Auto top" btn-class="btn-info " btn-split="true" placement="top-start" class="dropup">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
