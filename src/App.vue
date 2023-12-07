@@ -77,7 +77,7 @@
   <div class="container">
     <!-- Button trigger dropdown -->
     <div class="btn-toolbar">
-      <bootstrap-dropdown
+      <DropdownComponent
         :title="title1"
         btn-class="btn-danger"
         btn-split="true"
@@ -87,35 +87,35 @@
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </bootstrap-dropdown>
-      <bootstrap-dropdown :title="title2">
+      </DropdownComponent>
+      <DropdownComponent :title="title2">
         <div>
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </bootstrap-dropdown>
+      </DropdownComponent>
     </div>
-    <bootstrap-dropdown :title="title2" btn-class="btn-warning btn-lg">
+    <DropdownComponent :title="title2" btn-class="btn-warning btn-lg">
       <div>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
-    </bootstrap-dropdown>
+    </DropdownComponent>
 
-    <bootstrap-dropdown title="dropdown-menu-lg-end" btn-class="btn-info" btn-split="true" dropdown-class="dropdown-menu-end dropdown-menu-lg-start">
+    <DropdownComponent title="dropdown-menu-lg-end" btn-class="btn-info" btn-split="true" dropdown-class="dropdown-menu-end dropdown-menu-lg-start">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
-    </bootstrap-dropdown>
+    </DropdownComponent>
 
     <div style="min-height: 100px">
       1111
       <hr />
     </div>
     <div class="btn-toolbar">
-      <bootstrap-dropdown :title="title1" btn-class="btn-danger">
+      <DropdownComponent :title="title1" btn-class="btn-danger">
         <div>
           <a class="dropdown-item" href="#" @click="title1 = 'Actions'"
             >Action</a
@@ -124,28 +124,28 @@
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </bootstrap-dropdown>
-      <bootstrap-dropdown title="Drop right" placement="right-start" class="dropend">
+      </DropdownComponent>
+      <DropdownComponent title="Drop right" placement="right-start" class="dropend">
         <div>
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </bootstrap-dropdown>
+      </DropdownComponent>
     </div>
-    <bootstrap-dropdown title="Dark" btn-class="btn-warning" dropdown-class="dropdown-menu-dark">
+    <DropdownComponent title="Dark" btn-class="btn-warning" dropdown-class="dropdown-menu-dark">
       <div>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
       </div>
-    </bootstrap-dropdown>
+    </DropdownComponent>
 
-    <bootstrap-dropdown title="Auto top" btn-class="btn-info " btn-split="true" placement="top-start" class="dropup">
+    <DropdownComponent title="Auto top" btn-class="btn-info " btn-split="true" placement="top-start" class="dropup">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
-    </bootstrap-dropdown>
+    </DropdownComponent>
   </div>
   <div style="min-height: 1000px">
     1111
@@ -153,7 +153,12 @@
   </div>
 </template>
 <script>
+
+import DropdownComponent from "./BootstrapDropdown.vue";
 export default {
+  components: { 
+    DropdownComponent
+  },
   data() {
     var self = this;
     return {
