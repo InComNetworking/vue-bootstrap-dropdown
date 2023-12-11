@@ -3,7 +3,7 @@ var k = "top", T = "bottom", L = "right", B = "left", jt = "auto", ut = [k, T, L
   return t.concat([e + "-" + Z, e + "-" + ft]);
 }, []), oe = /* @__PURE__ */ [].concat(ut, [jt]).reduce(function(t, e) {
   return t.concat([e, e + "-" + Z, e + "-" + ft]);
-}, []), Ee = "beforeRead", Ae = "read", De = "afterRead", Se = "beforeMain", Ce = "main", Pe = "afterMain", ke = "beforeWrite", Be = "write", Re = "afterWrite", je = [Ee, Ae, De, Se, Ce, Pe, ke, Be, Re];
+}, []), Ee = "beforeRead", Ae = "read", Ce = "afterRead", De = "beforeMain", Se = "main", Pe = "afterMain", ke = "beforeWrite", Be = "write", Re = "afterWrite", je = [Ee, Ae, Ce, De, Se, Pe, ke, Be, Re];
 function V(t) {
   return t ? (t.nodeName || "").toLowerCase() : null;
 }
@@ -194,8 +194,8 @@ var Ve = function(e, r) {
 function Ne(t) {
   var e, r = t.state, a = t.name, n = t.options, o = r.elements.arrow, f = r.modifiersData.popperOffsets, s = H(r.placement), i = Lt(s), c = [B, L].indexOf(s) >= 0, p = c ? "height" : "width";
   if (!(!o || !f)) {
-    var h = Ve(n.padding, r), y = Tt(o), u = i === "y" ? k : B, w = i === "y" ? T : L, v = r.rects.reference[p] + r.rects.reference[i] - f[i] - r.rects.popper[p], d = f[i] - r.rects.reference[i], b = lt(o), O = b ? i === "y" ? b.clientHeight || 0 : b.clientWidth || 0 : 0, E = v / 2 - d / 2, l = h[u], m = O - y[p] - h[w], g = O / 2 - y[p] / 2 + E, x = it(l, g, m), S = i;
-    r.modifiersData[a] = (e = {}, e[S] = x, e.centerOffset = x - g, e);
+    var h = Ve(n.padding, r), y = Tt(o), u = i === "y" ? k : B, w = i === "y" ? T : L, v = r.rects.reference[p] + r.rects.reference[i] - f[i] - r.rects.popper[p], d = f[i] - r.rects.reference[i], b = lt(o), O = b ? i === "y" ? b.clientHeight || 0 : b.clientWidth || 0 : 0, E = v / 2 - d / 2, l = h[u], m = O - y[p] - h[w], g = O / 2 - y[p] / 2 + E, x = it(l, g, m), D = i;
+    r.modifiersData[a] = (e = {}, e[D] = x, e.centerOffset = x - g, e);
   }
 }
 function Fe(t) {
@@ -238,19 +238,19 @@ function Qt(t) {
   u = d.x, v = d.y;
   var b = f.hasOwnProperty("x"), O = f.hasOwnProperty("y"), E = B, l = k, m = window;
   if (c) {
-    var g = lt(r), x = "clientHeight", S = "clientWidth";
-    if (g === j(r) && (g = q(r), N(g).position !== "static" && s === "absolute" && (x = "scrollHeight", S = "scrollWidth")), g = g, n === k || (n === B || n === L) && o === ft) {
+    var g = lt(r), x = "clientHeight", D = "clientWidth";
+    if (g === j(r) && (g = q(r), N(g).position !== "static" && s === "absolute" && (x = "scrollHeight", D = "scrollWidth")), g = g, n === k || (n === B || n === L) && o === ft) {
       l = T;
-      var D = h && g === m && m.visualViewport ? m.visualViewport.height : g[x];
-      v -= D - a.height, v *= i ? 1 : -1;
+      var C = h && g === m && m.visualViewport ? m.visualViewport.height : g[x];
+      v -= C - a.height, v *= i ? 1 : -1;
     }
     if (n === B || (n === k || n === T) && o === ft) {
       E = L;
-      var A = h && g === m && m.visualViewport ? m.visualViewport.width : g[S];
+      var A = h && g === m && m.visualViewport ? m.visualViewport.width : g[D];
       u -= A - a.width, u *= i ? 1 : -1;
     }
   }
-  var C = Object.assign({
+  var S = Object.assign({
     position: s
   }, c && qe), M = p === !0 ? Xe({
     x: u,
@@ -261,9 +261,9 @@ function Qt(t) {
   };
   if (u = M.x, v = M.y, i) {
     var P;
-    return Object.assign({}, C, (P = {}, P[l] = O ? "0" : "", P[E] = b ? "0" : "", P.transform = (m.devicePixelRatio || 1) <= 1 ? "translate(" + u + "px, " + v + "px)" : "translate3d(" + u + "px, " + v + "px, 0)", P));
+    return Object.assign({}, S, (P = {}, P[l] = O ? "0" : "", P[E] = b ? "0" : "", P.transform = (m.devicePixelRatio || 1) <= 1 ? "translate(" + u + "px, " + v + "px)" : "translate3d(" + u + "px, " + v + "px, 0)", P));
   }
-  return Object.assign({}, C, (e = {}, e[l] = O ? v + "px" : "", e[E] = b ? u + "px" : "", e.transform = "", e));
+  return Object.assign({}, S, (e = {}, e[l] = O ? v + "px" : "", e[E] = b ? u + "px" : "", e.transform = "", e));
 }
 function Ye(t) {
   var e = t.state, r = t.options, a = r.gpuAcceleration, n = a === void 0 ? !0 : a, o = r.adaptive, f = o === void 0 ? !0 : o, s = r.roundOffsets, i = s === void 0 ? !0 : s, c = {
@@ -465,14 +465,14 @@ function pt(t, e) {
     element: E,
     strategy: "absolute",
     placement: n
-  }), S = Rt(Object.assign({}, E, x)), D = y === ot ? S : g, A = {
-    top: m.top - D.top + b.top,
-    bottom: D.bottom - m.bottom + b.bottom,
-    left: m.left - D.left + b.left,
-    right: D.right - m.right + b.right
-  }, C = t.modifiersData.offset;
-  if (y === ot && C) {
-    var M = C[n];
+  }), D = Rt(Object.assign({}, E, x)), C = y === ot ? D : g, A = {
+    top: m.top - C.top + b.top,
+    bottom: C.bottom - m.bottom + b.bottom,
+    left: m.left - C.left + b.left,
+    right: C.right - m.right + b.right
+  }, S = t.modifiersData.offset;
+  if (y === ot && S) {
+    var M = S[n];
     Object.keys(A).forEach(function(P) {
       var X = [L, T].indexOf(P) >= 0 ? 1 : -1, Y = [k, T].indexOf(P) >= 0 ? "y" : "x";
       A[P] += M[Y] * X;
@@ -518,9 +518,9 @@ function ar(t) {
         flipVariations: w,
         allowedAutoPlacements: v
       }) : F);
-    }, []), m = e.rects.reference, g = e.rects.popper, x = /* @__PURE__ */ new Map(), S = !0, D = l[0], A = 0; A < l.length; A++) {
-      var C = l[A], M = H(C), P = et(C) === Z, X = [k, T].indexOf(M) >= 0, Y = X ? "width" : "height", R = pt(e, {
-        placement: C,
+    }, []), m = e.rects.reference, g = e.rects.popper, x = /* @__PURE__ */ new Map(), D = !0, C = l[0], A = 0; A < l.length; A++) {
+      var S = l[A], M = H(S), P = et(S) === Z, X = [k, T].indexOf(M) >= 0, Y = X ? "width" : "height", R = pt(e, {
+        placement: S,
         boundary: p,
         rootBoundary: h,
         altBoundary: y,
@@ -531,28 +531,28 @@ function ar(t) {
       if (o && z.push(R[M] <= 0), s && z.push(R[W] <= 0, R[dt] <= 0), z.every(function(Q) {
         return Q;
       })) {
-        D = C, S = !1;
+        C = S, D = !1;
         break;
       }
-      x.set(C, z);
+      x.set(S, z);
     }
-    if (S)
+    if (D)
       for (var vt = w ? 3 : 1, At = function(F) {
         var nt = l.find(function(mt) {
           var U = x.get(mt);
           if (U)
-            return U.slice(0, F).every(function(Dt) {
-              return Dt;
+            return U.slice(0, F).every(function(Ct) {
+              return Ct;
             });
         });
         if (nt)
-          return D = nt, "break";
+          return C = nt, "break";
       }, rt = vt; rt > 0; rt--) {
         var ht = At(rt);
         if (ht === "break")
           break;
       }
-    e.placement !== D && (e.modifiersData[a]._skip = !0, e.placement = D, e.reset = !0);
+    e.placement !== C && (e.modifiersData[a]._skip = !0, e.placement = C, e.reset = !0);
   }
 }
 const or = {
@@ -654,28 +654,28 @@ function vr(t) {
     rootBoundary: c,
     padding: h,
     altBoundary: p
-  }), b = H(e.placement), O = et(e.placement), E = !O, l = Lt(b), m = dr(l), g = e.modifiersData.popperOffsets, x = e.rects.reference, S = e.rects.popper, D = typeof v == "function" ? v(Object.assign({}, e.rects, {
+  }), b = H(e.placement), O = et(e.placement), E = !O, l = Lt(b), m = dr(l), g = e.modifiersData.popperOffsets, x = e.rects.reference, D = e.rects.popper, C = typeof v == "function" ? v(Object.assign({}, e.rects, {
     placement: e.placement
-  })) : v, A = typeof D == "number" ? {
-    mainAxis: D,
-    altAxis: D
+  })) : v, A = typeof C == "number" ? {
+    mainAxis: C,
+    altAxis: C
   } : Object.assign({
     mainAxis: 0,
     altAxis: 0
-  }, D), C = e.modifiersData.offset ? e.modifiersData.offset[e.placement] : null, M = {
+  }, C), S = e.modifiersData.offset ? e.modifiersData.offset[e.placement] : null, M = {
     x: 0,
     y: 0
   };
   if (!!g) {
     if (o) {
-      var P, X = l === "y" ? k : B, Y = l === "y" ? T : L, R = l === "y" ? "height" : "width", W = g[l], dt = W + d[X], z = W - d[Y], vt = u ? -S[R] / 2 : 0, At = O === Z ? x[R] : S[R], rt = O === Z ? -S[R] : -x[R], ht = e.elements.arrow, Q = u && ht ? Tt(ht) : {
+      var P, X = l === "y" ? k : B, Y = l === "y" ? T : L, R = l === "y" ? "height" : "width", W = g[l], dt = W + d[X], z = W - d[Y], vt = u ? -D[R] / 2 : 0, At = O === Z ? x[R] : D[R], rt = O === Z ? -D[R] : -x[R], ht = e.elements.arrow, Q = u && ht ? Tt(ht) : {
         width: 0,
         height: 0
-      }, F = e.modifiersData["arrow#persistent"] ? e.modifiersData["arrow#persistent"].padding : fe(), nt = F[X], mt = F[Y], U = it(0, x[R], Q[R]), Dt = E ? x[R] / 2 - vt - U - nt - A.mainAxis : At - U - nt - A.mainAxis, ve = E ? -x[R] / 2 + vt + U + mt + A.mainAxis : rt + U + mt + A.mainAxis, St = e.elements.arrow && lt(e.elements.arrow), he = St ? l === "y" ? St.clientTop || 0 : St.clientLeft || 0 : 0, Vt = (P = C == null ? void 0 : C[l]) != null ? P : 0, me = W + Dt - Vt - he, ge = W + ve - Vt, Nt = it(u ? Ot(dt, me) : dt, W, u ? J(z, ge) : z);
+      }, F = e.modifiersData["arrow#persistent"] ? e.modifiersData["arrow#persistent"].padding : fe(), nt = F[X], mt = F[Y], U = it(0, x[R], Q[R]), Ct = E ? x[R] / 2 - vt - U - nt - A.mainAxis : At - U - nt - A.mainAxis, ve = E ? -x[R] / 2 + vt + U + mt + A.mainAxis : rt + U + mt + A.mainAxis, Dt = e.elements.arrow && lt(e.elements.arrow), he = Dt ? l === "y" ? Dt.clientTop || 0 : Dt.clientLeft || 0 : 0, Vt = (P = S == null ? void 0 : S[l]) != null ? P : 0, me = W + Ct - Vt - he, ge = W + ve - Vt, Nt = it(u ? Ot(dt, me) : dt, W, u ? J(z, ge) : z);
       g[l] = Nt, M[l] = Nt - W;
     }
     if (s) {
-      var Ft, ye = l === "x" ? k : B, be = l === "x" ? T : L, G = g[m], gt = m === "y" ? "height" : "width", It = G + d[ye], qt = G - d[be], Ct = [k, B].indexOf(b) !== -1, Xt = (Ft = C == null ? void 0 : C[m]) != null ? Ft : 0, Yt = Ct ? It : G - x[gt] - S[gt] - Xt + A.altAxis, zt = Ct ? G + x[gt] + S[gt] - Xt - A.altAxis : qt, Ut = u && Ct ? He(Yt, G, zt) : it(u ? Yt : It, G, u ? zt : qt);
+      var Ft, ye = l === "x" ? k : B, be = l === "x" ? T : L, G = g[m], gt = m === "y" ? "height" : "width", It = G + d[ye], qt = G - d[be], St = [k, B].indexOf(b) !== -1, Xt = (Ft = S == null ? void 0 : S[m]) != null ? Ft : 0, Yt = St ? It : G - x[gt] - D[gt] - Xt + A.altAxis, zt = St ? G + x[gt] + D[gt] - Xt - A.altAxis : qt, Ut = u && St ? He(Yt, G, zt) : it(u ? Yt : It, G, u ? zt : qt);
       g[m] = Ut, M[m] = Ut - G;
     }
     e.modifiersData[a] = M;
@@ -822,11 +822,11 @@ function Ar(t) {
                 p.reset = !1, l = -1;
                 continue;
               }
-              var m = p.orderedModifiers[l], g = m.fn, x = m.options, S = x === void 0 ? {} : x, D = m.name;
+              var m = p.orderedModifiers[l], g = m.fn, x = m.options, D = x === void 0 ? {} : x, C = m.name;
               typeof g == "function" && (p = g({
                 state: p,
-                options: S,
-                name: D,
+                options: D,
+                name: C,
                 instance: u
               }) || p);
             }
@@ -870,10 +870,10 @@ function Ar(t) {
     return u;
   };
 }
-var Dr = [Ge, lr, ze, Le, cr, or, hr, Ie, sr], Sr = /* @__PURE__ */ Ar({
-  defaultModifiers: Dr
+var Cr = [Ge, lr, ze, Le, cr, or, hr, Ie, sr], Dr = /* @__PURE__ */ Ar({
+  defaultModifiers: Cr
 });
-const Cr = (t, e) => {
+const Sr = (t, e) => {
   const r = t.__vccOpts || t;
   for (const [a, n] of e)
     r[a] = n;
@@ -926,7 +926,7 @@ const Tr = {
   props: ["title", "placement", "btn-class", "btn-split", "dropdown-class"],
   watch: {},
   computed: {
-    dropdownClass: function() {
+    dropdownClassComputed: function() {
       var t = "";
       return this.isShow && (t = t + " show"), this.dropdownClass && (t = t + " " + this.dropdownClass), t;
     }
@@ -935,7 +935,7 @@ const Tr = {
     switchState: function() {
       this.isShow = !this.isShow;
       var t = "bottom-start";
-      Br.indexOf(this.placement) !== -1 && (t = this.placement), this.isShow && Sr(this.$refs.button, this.$refs.popup, {
+      Br.indexOf(this.placement) !== -1 && (t = this.placement), this.isShow && Dr(this.$refs.button, this.$refs.popup, {
         placement: t
       });
     }
@@ -997,7 +997,7 @@ function Ir(t, e, r, a, n, o) {
       }, Nr, 10, Hr)) : Pt("", !0)
     ]),
     kt("div", {
-      class: at(["dropdown-menu", o.dropdownClass]),
+      class: at(["dropdown-menu", o.dropdownClassComputed]),
       ref: "popup",
       "data-bs-popper": "static",
       "aria-labelledby": t.id,
@@ -1007,7 +1007,7 @@ function Ir(t, e, r, a, n, o) {
     ], 10, Fr)
   ], 2);
 }
-const Xr = /* @__PURE__ */ Cr(Tr, [["render", Ir]]);
+const Xr = /* @__PURE__ */ Sr(Tr, [["render", Ir]]);
 export {
   Xr as default
 };

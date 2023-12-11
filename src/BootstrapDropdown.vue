@@ -45,7 +45,7 @@
       class="dropdown-menu"
       ref="popup"
       data-bs-popper="static"
-      :class="dropdownClass"
+      :class="dropdownClassComputed"
       :aria-labelledby="id"
       @click="switchState"
     >
@@ -129,7 +129,7 @@ export default {
   props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class'],
   watch: {},
   computed: {
-    dropdownClass: function () {
+    dropdownClassComputed: function () {
       var btnClass = "";
       if (this.isShow) {
         btnClass = btnClass + " show";
