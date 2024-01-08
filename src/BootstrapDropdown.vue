@@ -153,6 +153,7 @@ export default {
         return
       }
       this.isShow = !this.isShow;
+      this.isManualHide = false;
       var position = "bottom-start";
       if (Placement.indexOf(this.placement) !== -1) {
         position = this.placement;
