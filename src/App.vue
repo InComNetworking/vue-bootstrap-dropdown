@@ -81,12 +81,16 @@
         :title="title1"
         btn-class="btn-danger"
         btn-split="true"
+        :no-auto-hide="true"
       >
+      <template v-slot:default="slotProps">
         <div>
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
+        <button class="btn btn-primary" @click="slotProps.dropdown.hide()">close</button>
+      </template>
       </DropdownComponent>
       <DropdownComponent :title="title2">
         <div>

@@ -49,7 +49,7 @@
       :aria-labelledby="id"
       @click="switchState"
     >
-      <slot></slot>
+      <slot v-bind:dropdown="dropdownPointer"></slot>
     </div>
   </div>
 </template>
@@ -124,11 +124,15 @@ export default {
   data() {
     return {
       isShow: false,
+      isManualHide: false,
     };
   },
-  props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class'],
+  props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class', 'noAutoHide'],
   watch: {},
   computed: {
+    dropdownPointer: function(){
+      return this;
+    },
     dropdownClassComputed: function () {
       var btnClass = "";
       if (this.isShow) {
@@ -141,7 +145,13 @@ export default {
     },
   },
   methods: {
+    hide: function(){
+      this.isManualHide = true
+    },
     switchState: function () {
+      if(this.noAutoHide && this.isManualHide !== true && this.isShow) {
+        return
+      }
       this.isShow = !this.isShow;
       var position = "bottom-start";
       if (Placement.indexOf(this.placement) !== -1) {
