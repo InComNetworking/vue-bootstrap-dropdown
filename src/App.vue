@@ -78,7 +78,7 @@
     <!-- Button trigger dropdown -->
     <div class="btn-toolbar">
       <DropdownComponent
-        :title="title1"
+        :title="'<bold>1</b>' + title1"
         btn-class="btn-danger"
         btn-split="true"
         :no-auto-hide="true"

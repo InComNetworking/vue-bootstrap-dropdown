@@ -12,8 +12,8 @@
       ref="button"
       @click="switchState"
       :aria-expanded="isShow"
+      v-html="title"
     >
-      {{ title }}
     </button>
     <div class="btn-group">
       <button
@@ -25,8 +25,8 @@
         aria-haspopup="true"
         :id="id"
         ref="button"
+        v-html="title"
       >
-        {{ title }}
       </button>
       <button
         v-if="btnSplit"
