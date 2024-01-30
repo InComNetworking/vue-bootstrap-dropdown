@@ -32,7 +32,7 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "./index.js",
+      entry: "./src/index.js",
       name: packageExportName,
       // the proper extensions will be added
       fileName: "vue-bootstrap-dropdown",
