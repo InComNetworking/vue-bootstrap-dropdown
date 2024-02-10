@@ -128,7 +128,15 @@ export default {
     };
   },
   props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class', 'noAutoHide'],
-  watch: {},
+  emits: ["hidden", "show"],
+  watch: {
+    isShow: function(newValue) {
+      if(newValue) {
+        return this.$emit("show")
+      }
+      return this.$emit("hidden")
+    }
+  },
   computed: {
     dropdownPointer: function(){
       return this;
