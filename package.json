@@ -54,6 +54,6 @@
     "vue": "^3.2.27"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.6"
+    "@floating-ui/vue": "^1.0.6"
   }
 }

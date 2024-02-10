@@ -54,7 +54,7 @@
   </div>
 </template>
 <script>
-import { createPopper } from "@popperjs/core";
+import { useFloating } from "@floating-ui/vue";
 var dropdownCounter = 0;
 var getIdGenerator = function () {
   return "dropdown-" + dropdownCounter++;
@@ -168,7 +168,7 @@ export default {
       }
       
       if(this.isShow) {
-        createPopper(this.$refs["button"], this.$refs["popup"], {
+        useFloating(this.$refs["button"], this.$refs["popup"], {
           placement: position,
         });
       }
