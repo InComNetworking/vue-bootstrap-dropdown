@@ -1,17 +1,17 @@
 {
   "name": "vue-bootstrap-dropdown",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Vue 3 bootstrap 5.1 dropdown component",
   "files": [
     "dist",
     "src"
   ],
-  "main": "./dist/vue-bootstrap-dropdown.umd.cjs",
+  "main": "./dist/vue-bootstrap-dropdown.umd.js",
   "module": "./src/index.js",
   "exports": {
     ".": {
       "import": "./src/index.js",
-      "require": "./dist/vue-bootstrap-dropdown.umd.cjs"
+      "require": "./dist/vue-bootstrap-dropdown.umd.js"
     },
     "./style": "./dist/style.css",
     "./vue": "./src/vue-bootstrap-dropdown.vue"
@@ -54,6 +54,5 @@
     "vue": "^3.2.27"
   },
   "dependencies": {
-    "@floating-ui/vue": "^1.0.6"
   }
 }

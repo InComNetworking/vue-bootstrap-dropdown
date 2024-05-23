@@ -13,7 +13,6 @@ var mapSettings = {
   },
 };
 
-
 function camelize(str) {
   let arr = str.split("-");
   let capital = arr.map(
@@ -36,6 +35,7 @@ export default defineConfig({
       name: packageExportName,
       // the proper extensions will be added
       fileName: "vue-bootstrap-dropdown",
+      formats: ['umd']
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

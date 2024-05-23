@@ -83,14 +83,16 @@
         btn-split="true"
         :no-auto-hide="true"
       >
-      <template v-slot:default="slotProps">
-        <div>
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-        <button class="btn btn-primary" @click="slotProps.dropdown.hide()">close</button>
-      </template>
+        <template v-slot:default="slotProps">
+          <div>
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+          <button class="btn btn-primary" @click="slotProps.dropdown.hide()">
+            close
+          </button>
+        </template>
       </DropdownComponent>
       <DropdownComponent :title="title2">
         <div>
@@ -108,7 +110,12 @@
       </div>
     </DropdownComponent>
 
-    <DropdownComponent title="dropdown-menu-lg-end" btn-class="btn-info" btn-split="true" dropdown-class="dropdown-menu-end dropdown-menu-lg-start">
+    <DropdownComponent
+      title="dropdown-menu-lg-end"
+      btn-class="btn-info"
+      btn-split="true"
+      dropdown-class="dropdown-menu-end dropdown-menu-lg-start"
+    >
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
@@ -129,7 +136,11 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </DropdownComponent>
-      <DropdownComponent title="Drop right" placement="right-start" class="dropend">
+      <DropdownComponent
+        title="Drop right"
+        placement="right-start"
+        class="dropend"
+      >
         <div>
           <a class="dropdown-item" href="#">Action</a>
           <a class="dropdown-item" href="#">Another action</a>
@@ -137,7 +148,11 @@
         </div>
       </DropdownComponent>
     </div>
-    <DropdownComponent title="Dark" btn-class="btn-warning" dropdown-class="dropdown-menu-dark">
+    <DropdownComponent
+      title="Dark"
+      btn-class="btn-warning"
+      dropdown-class="dropdown-menu-dark"
+    >
       <div>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
@@ -145,7 +160,13 @@
       </div>
     </DropdownComponent>
 
-    <DropdownComponent title="Auto top" btn-class="btn-info " btn-split="true" placement="top-start" class="dropup">
+    <DropdownComponent
+      title="Auto top"
+      btn-class="btn-info "
+      btn-split="true"
+      placement="top-start"
+      class="dropup"
+    >
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
@@ -157,11 +178,10 @@
   </div>
 </template>
 <script>
-
 import DropdownComponent from "./BootstrapDropdown.vue";
 export default {
-  components: { 
-    DropdownComponent
+  components: {
+    DropdownComponent,
   },
   data() {
     var self = this;

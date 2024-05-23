@@ -3,7 +3,7 @@
   <div class="dropdown" :class="{ show: isShow }">
     <button
       v-if="!btnSplit"
-      class="btn dropdown-toggle"
+      class="btn"
       :class="btnClass"
       type="button"
       data-toggle="dropdown"
@@ -12,9 +12,11 @@
       ref="button"
       @click="switchState"
       :aria-expanded="isShow"
-      v-html="title"
     >
+      <span v-html="title"></span>
+      <i class="fa-solid fa-chevron-down ps-3"></i>
     </button>
+
     <div class="btn-group">
       <button
         v-if="btnSplit"
@@ -26,11 +28,10 @@
         :id="id"
         ref="button"
         v-html="title"
-      >
-      </button>
+      ></button>
       <button
         v-if="btnSplit"
-        class="btn dropdown-toggle dropdown-toggle-split"
+        class="btn dropdown-toggle-split"
         :class="btnClass"
         type="button"
         data-toggle="dropdown"
@@ -38,6 +39,7 @@
         :aria-expanded="isShow"
         @click="switchState"
       >
+        <i class="fa-solid fa-chevron-down"></i>
         <span class="visually-hidden">Toggle Dropdown</span>
       </button>
     </div>
@@ -54,7 +56,6 @@
   </div>
 </template>
 <script>
-import { useFloating } from "@floating-ui/vue";
 var dropdownCounter = 0;
 var getIdGenerator = function () {
   return "dropdown-" + dropdownCounter++;
@@ -127,18 +128,25 @@ export default {
       isManualHide: false,
     };
   },
-  props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class', 'noAutoHide'],
+  props: [
+    "title",
+    "placement",
+    "btn-class",
+    "btn-split",
+    "dropdown-class",
+    "noAutoHide",
+  ],
   emits: ["hidden", "show"],
   watch: {
-    isShow: function(newValue) {
-      if(newValue) {
-        return this.$emit("show")
+    isShow: function (newValue) {
+      if (newValue) {
+        return this.$emit("show");
       }
-      return this.$emit("hidden")
-    }
+      return this.$emit("hidden");
+    },
   },
   computed: {
-    dropdownPointer: function(){
+    dropdownPointer: function () {
       return this;
     },
     dropdownClassComputed: function () {
@@ -146,19 +154,19 @@ export default {
       if (this.isShow) {
         btnClass = btnClass + " show";
       }
-      if(this.dropdownClass) {
+      if (this.dropdownClass) {
         btnClass = btnClass + " " + this.dropdownClass;
       }
       return btnClass;
     },
   },
   methods: {
-    hide: function(){
-      this.isManualHide = true
+    hide: function () {
+      this.isManualHide = true;
     },
     switchState: function () {
-      if(this.noAutoHide && this.isManualHide !== true && this.isShow) {
-        return
+      if (this.noAutoHide && this.isManualHide !== true && this.isShow) {
+        return;
       }
       this.isShow = !this.isShow;
       this.isManualHide = false;
@@ -166,11 +174,8 @@ export default {
       if (Placement.indexOf(this.placement) !== -1) {
         position = this.placement;
       }
-      
-      if(this.isShow) {
-        useFloating(this.$refs["button"], this.$refs["popup"], {
-          placement: position,
-        });
+
+      if (this.isShow) {
       }
     },
   },
