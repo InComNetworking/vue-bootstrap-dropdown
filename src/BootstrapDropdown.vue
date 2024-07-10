@@ -49,7 +49,7 @@
       data-bs-popper="static"
       :class="dropdownClassComputed"
       :aria-labelledby="id"
-      @click="switchState"
+      @click="clickInside"
     >
       <slot v-bind:dropdown="dropdownPointer"></slot>
     </div>
@@ -164,18 +164,18 @@ export default {
     hide: function () {
       this.isManualHide = true;
     },
-    switchState: function () {
+    clickInside: function() {
       if (this.noAutoHide && this.isManualHide !== true && this.isShow) {
-        return;
+        return
       }
+      this.switchState();
+    },
+    switchState: function () {
       this.isShow = !this.isShow;
       this.isManualHide = false;
       var position = "bottom-start";
       if (Placement.indexOf(this.placement) !== -1) {
         position = this.placement;
-      }
-
-      if (this.isShow) {
       }
     },
   },
