@@ -35,7 +35,7 @@ export default defineConfig({
       name: packageExportName,
       // the proper extensions will be added
       fileName: "vue-bootstrap-dropdown",
-      formats: ['umd']
+      formats: ["umd"],
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

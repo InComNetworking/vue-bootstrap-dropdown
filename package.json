@@ -1,6 +1,6 @@
 {
   "name": "vue-bootstrap-dropdown",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Vue 3 bootstrap 5.1 dropdown component",
   "files": [
     "dist",

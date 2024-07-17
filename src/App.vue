@@ -82,6 +82,7 @@
         btn-class="btn-danger"
         btn-split="true"
         :no-auto-hide="true"
+        @click="clicked"
       >
         <template v-slot:default="slotProps">
           <div>
@@ -215,6 +216,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    clicked: function (e) {
+      console.log("clicked", e);
+    },
   },
   mounted() {},
 };

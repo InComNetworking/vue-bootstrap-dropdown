@@ -17,9 +17,8 @@
       <i class="fa-solid fa-chevron-down ps-3"></i>
     </button>
 
-    <div class="btn-group">
+    <div class="btn-group" v-if="btnSplit">
       <button
-        v-if="btnSplit"
         class="btn"
         :class="btnClass"
         type="button"
@@ -28,9 +27,9 @@
         :id="id"
         ref="button"
         v-html="title"
+        @click="$emit('click')"
       ></button>
       <button
-        v-if="btnSplit"
         class="btn dropdown-toggle-split"
         :class="btnClass"
         type="button"
@@ -136,7 +135,7 @@ export default {
     "dropdown-class",
     "noAutoHide",
   ],
-  emits: ["hidden", "show"],
+  emits: ["hidden", "show", "click"],
   watch: {
     isShow: function (newValue) {
       if (newValue) {
@@ -164,9 +163,9 @@ export default {
     hide: function () {
       this.isManualHide = true;
     },
-    clickInside: function() {
+    clickInside: function () {
       if (this.noAutoHide && this.isManualHide !== true && this.isShow) {
-        return
+        return;
       }
       this.switchState();
     },
