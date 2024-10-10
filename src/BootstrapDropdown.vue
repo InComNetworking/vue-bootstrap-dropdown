@@ -1,4 +1,8 @@
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.dropdown-menu.show {
+  z-index: 1001;
+}
+</style>
 <template>
   <div class="dropdown" :class="{ show: isShow }">
     <button
