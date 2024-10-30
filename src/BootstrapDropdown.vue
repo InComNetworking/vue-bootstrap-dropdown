@@ -1,9 +1,13 @@
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.dropdown-menu.show {
+  z-index: 1001;
+}
+</style>
 <template>
   <div class="dropdown" :class="{ show: isShow }">
     <button
       v-if="!btnSplit"
-      class="btn dropdown-toggle"
+      class="btn"
       :class="btnClass"
       type="button"
       data-toggle="dropdown"
@@ -13,11 +17,12 @@
       @click="switchState"
       :aria-expanded="isShow"
     >
-      {{ title }}
+      <span v-html="title"></span>
+      <i class="fa-solid fa-chevron-down ps-3"></i>
     </button>
-    <div class="btn-group">
+
+    <div class="btn-group" v-if="btnSplit">
       <button
-        v-if="btnSplit"
         class="btn"
         :class="btnClass"
         type="button"
@@ -25,12 +30,11 @@
         aria-haspopup="true"
         :id="id"
         ref="button"
-      >
-        {{ title }}
-      </button>
+        v-html="title"
+        @click="$emit('click')"
+      ></button>
       <button
-        v-if="btnSplit"
-        class="btn dropdown-toggle dropdown-toggle-split"
+        class="btn dropdown-toggle-split"
         :class="btnClass"
         type="button"
         data-toggle="dropdown"
@@ -38,6 +42,7 @@
         :aria-expanded="isShow"
         @click="switchState"
       >
+        <i class="fa-solid fa-chevron-down"></i>
         <span class="visually-hidden">Toggle Dropdown</span>
       </button>
     </div>
@@ -45,16 +50,15 @@
       class="dropdown-menu"
       ref="popup"
       data-bs-popper="static"
-      :class="dropdownClass"
+      :class="dropdownClassComputed"
       :aria-labelledby="id"
-      @click="switchState"
+      @click="clickInside"
     >
-      <slot></slot>
+      <slot v-bind:dropdown="dropdownPointer"></slot>
     </div>
   </div>
 </template>
 <script>
-import { createPopper } from "@popperjs/core";
 var dropdownCounter = 0;
 var getIdGenerator = function () {
   return "dropdown-" + dropdownCounter++;
@@ -124,34 +128,57 @@ export default {
   data() {
     return {
       isShow: false,
+      isManualHide: false,
     };
   },
-  props: ["title", "placement", "btn-class", "btn-split", 'dropdown-class'],
-  watch: {},
+  props: [
+    "title",
+    "placement",
+    "btn-class",
+    "btn-split",
+    "dropdown-class",
+    "noAutoHide",
+  ],
+  emits: ["hidden", "show", "click"],
+  watch: {
+    isShow: function (newValue) {
+      if (newValue) {
+        return this.$emit("show");
+      }
+      return this.$emit("hidden");
+    },
+  },
   computed: {
-    dropdownClass: function () {
+    dropdownPointer: function () {
+      return this;
+    },
+    dropdownClassComputed: function () {
       var btnClass = "";
       if (this.isShow) {
         btnClass = btnClass + " show";
       }
-      if(this.dropdownClass) {
+      if (this.dropdownClass) {
         btnClass = btnClass + " " + this.dropdownClass;
       }
       return btnClass;
     },
   },
   methods: {
+    hide: function () {
+      this.isManualHide = true;
+    },
+    clickInside: function () {
+      if (this.noAutoHide && this.isManualHide !== true && this.isShow) {
+        return;
+      }
+      this.switchState();
+    },
     switchState: function () {
       this.isShow = !this.isShow;
+      this.isManualHide = false;
       var position = "bottom-start";
       if (Placement.indexOf(this.placement) !== -1) {
         position = this.placement;
-      }
-      
-      if(this.isShow) {
-        createPopper(this.$refs["button"], this.$refs["popup"], {
-          placement: position,
-        });
       }
     },
   },
