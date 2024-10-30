@@ -1,5 +1,5 @@
 {
-  "name": "vue-bootstrap-dropdown",
+  "name": "@incomnetworking/vue-bootstrap-dropdown",
   "version": "1.0.11",
   "description": "Vue 3 bootstrap 5.1 dropdown component",
   "files": [
